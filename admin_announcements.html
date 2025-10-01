@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Dashboard</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">ADMIN DASHBOARD</a>
+    
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+           <img src="" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">admin</p>
+         <a href="admin_profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+   <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="">
+      <div class="line"></div>
+      
+   </div>
+
+   <nav class="navbar">
+      <a href="admin_dash.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href=" admin_manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="admin_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="user_management.html"><i class="fas fa-users"></i><span>user Management</span></a>
+      <a href="admin_setting.html"><i class="fas fa-cog"></i><span> system Settings</span></a>
+   </nav>
+</div>
+<!-- sidebar section end -->
+<section class="announcements max-w-900 my-3 mx-auto">
+   <h1 class="heading">Latest Announcements</h1>
+   <ul id="announcement-list" class="list-style-none p-0">
+      <li><button class="option-btn">System Maintenance - May 10</button></li>
+      <li><button class="option-btn">New Assignment Posted</button></li>
+      <li><button class="option-btn">Parent-Teacher Meeting</button></li>
+   </ul>
+   <div class="announcement-details">
+      <h2 id="announcement-title">Select an announcement</h2>
+      <p id="announcement-body" class="light-text">Click an announcement to view details.</p>
+   </div>
+</section>
+<section class="form-container my-2">
+   <form id="announcementForm" class="max-w-700 mx-auto bg-white shadow-md p-2 rounded">
+      <h2 class="heading"><i class="fas fa-bullhorn main-color mr-1"></i>Create Announcement</h2>
+      <label class="font-xl">Title</label>
+      <input type="text" name="title" class="box" required>
+      <label class="font-xl">Message</label>
+      <textarea name="message" class="box" rows="3" required></textarea>
+      <button type="submit" class="btn mt-2">Create Announcement</button>
+   </form>
+</section>
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>prestone chooye</span> | all rights reserved!
+</footer>
+<script src="js/script.js"></script>
+<script src="js/teacher_announcements.js"></script>
+</body>
+</html> 

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>View Students</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">TEACHER DASHBOARD</a>
+      <form action="#" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+           <img src="images/pic-1.jpg" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">teacher</p>
+         <a href="profile-teacher.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+    <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="">
+      <div class="line"></div>
+      
+   </div>
+   
+   <nav class="navbar">
+      <a href="teacher_home.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="teacher_messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+      <a href="teacher_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="grade_assignments.html"><i class="fas fa-marker"></i><span>Grade Assignments</span></a>
+      <a href="view_students.html"><i class="fas fa-users"></i><span>View Students</span></a>
+      <a href="teacher_assignments.html"><i class="fas fa-tasks"></i><span>Assignments</span></a>
+       <a href="create_test.html"><i class="fas fa-file-alt"></i><span>Create Test</span></a>
+      <a href="teacher_settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+   </nav>
+</div>
+<!-- sidebar section end -->
+<section class="students students-section">
+   <h1 class="heading"><i class="fas fa-users heading-icon"></i>View Students</h1>
+   <table class="students-table">
+      <thead class="table-header">
+         <tr>
+            <th class="table-cell">Name</th>
+            <th class="table-cell">Email</th>
+            <th class="table-cell">Phone no.</th>
+            <th class="table-cell">Address</th>
+         </tr>
+      </thead>
+      <tbody id="teacher-view-students-body">
+      </tbody>
+   </table>
+</section>
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>eduTechzam</span> | all rights reserved!
+</footer>
+<script src="js/script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+   // Only allow teachers to view; reuse existing check if present on script.js
+   try {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      if (!currentUser || currentUser.userType !== 'teacher') {
+         window.location.href = 'login.html';
+         return;
+      }
+   } catch (_) {}
+
+   const tbody = document.getElementById('teacher-view-students-body');
+   if (!tbody) return;
+   const students = JSON.parse(localStorage.getItem('teacher_view_students') || '[]');
+   if (!students.length) {
+      tbody.innerHTML = '<tr><td class="table-cell" colspan="4">No students sent yet. Ask admin to send the list from User Management.</td></tr>';
+      return;
+   }
+   tbody.innerHTML = students.map(s => {
+      const name = (s.name||'').toString();
+      const email = (s.email||'').toString();
+      const phone = (s.phone||'').toString();
+      const address = (s.address||'').toString();
+      return `<tr>
+         <td class="table-cell">${name}</td>
+         <td class="table-cell">${email}</td>
+         <td class="table-cell">${phone}</td>
+         <td class="table-cell">${address}</td>
+      </tr>`;
+   }).join('');
+});
+</script>
+</body>
+</html> 

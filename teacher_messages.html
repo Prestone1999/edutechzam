@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Teacher Messages</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">TEACHER DASHBOARD</a>
+      <form action="#" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+           <img src="images/pic-1.jpg" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">teacher</p>
+         <a href="profile-teacher.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+    <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="">
+      <div class="line"></div>
+      
+   </div>
+   
+   <nav class="navbar">
+      <a href="teacher_home.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="teacher_messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+      <a href="teacher_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="grade_assignments.html"><i class="fas fa-marker"></i><span>Grade Assignments</span></a>
+      <a href="view_students.html"><i class="fas fa-users"></i><span>View Students</span></a>
+      <a href="teacher_assignments.html"><i class="fas fa-tasks"></i><span>Assignments</span></a>
+       <a href="create_test.html"><i class="fas fa-file-alt"></i><span>Create Test</span></a>
+      <a href="teacher_settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+   </nav>
+</div>
+<!-- sidebar section end -->
+<section class="messages max-w-900 my-3 mx-auto chat-section">
+   <h1 class="heading">Messages</h1>
+   <div class="chat-container">
+      <ul id="message-list" class="chat-list"></ul>
+      <form id="send-message-form" class="chat-form" method="">
+         <textarea id="message-input" class="box" rows="1" placeholder="Type your message..."></textarea>
+         <button type="submit" class="btn chat-send"><i class="fas fa-paper-plane"></i></button>
+      </form>
+      <form id="reply-form" class="chat-form" style="display:none;">
+         <input type="text" id="reply-input" class="box" placeholder="Type your reply...">
+         <button type="button" class="btn chat-send" id="reply-send-btn"><i class="fas fa-reply"></i></button>
+      </form>
+   </div>
+</section>
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>prestone chooye</span> | all rights reserved!
+</footer>
+<script src="js/script.js"></script>
+<script src="js/messages.js"></script>
+</body>
+</html> 

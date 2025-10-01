@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Student Dashboard</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+
+<!-- header section start -->
+<header class="header sticky-header">
+   <section class="flex">
+      <a href="home.html" class="logo">STUDENT DASHBOARD</a>
+      <form action="#" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="notification-btn" class="fas fa-bell notification-icon">
+            <a href="" class="notification-link"></a>
+            <span class="notification-badge" style="display: none;">0</span>
+         </div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+         <img src="" class="image" id="header-profile-img" alt="Student Profile">
+         <h3 class="name"></h3>
+         <p class="role">student</p>
+         <a href="profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>   
+<!-- header section end -->
+
+<!-- Add welcome message -->
+<section class="welcome-section">
+   <h2 id="welcome-msg"></h2>
+</section>
+
+<!-- sidebar section start -->
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+   <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="Logo">
+      <div class="line"></div>
+   </div>
+   
+
+
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="test.html"><i class="fas fa-file-alt"></i><span>Test</span></a>
+      <a href="messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+      <a href="announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="student_grades.html"><i class="fas fa-chart-bar"></i><span>Grades</span></a>
+      <a href="assignments.html"><i class="fas fa-tasks"></i><span>Assignments</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+   </nav>
+
+</div>
+<!-- sidebar section end -->
+
+<!-- home grid section start -->
+<section class="home-grid mt-2">
+   <h1 class="heading"><i class="fas fa-bolt main-color mr-1"></i>Quick Options</h1>
+   <div class="box-container gap-2-5 ">
+      <div class="box shadow-light">
+         <h3 class="title"><i class="fas fa-file-alt main-color mr-half"></i>Test</h3>
+         <div class="flex">
+            <a href="test.html"><i class="fas fa-file-alt"></i><span>Take Test</span></a>
+         </div>
+   
+      </div>
+      <div class="box shadow-light">
+         <h3 class="title"><i class="fas fa-envelope main-color mr-half"></i>Messages</h3>
+         <div class="flex">
+            <a href="messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+         </div>
+      </div>
+      <div class="box shadow-light">
+         <h3 class="title"><i class="fas fa-bullhorn main-color mr-half"></i>Announcements</h3>
+         <div class="flex">
+            <a href="announcements.html"><i class="fas fa-bullhorn"></i><span>View Announcements</span></a>
+         </div>
+      </div>
+      <div class="box shadow-light">
+         <h3 class="title"><i class="fas fa-chart-bar main-color mr-half"></i>My Grades</h3>
+         <div class="flex">
+            <a href="student_grades.html"><i class="fas fa-chart-bar"></i><span>View Grades</span></a>
+         </div>
+      </div>
+      <div class="box shadow-light">
+         <h3 class="title"><i class="fas fa-chart-bar main-color mr-half"></i>Grades</h3>
+         <div class="flex">
+            <a href="grades.html"><i class="fas fa-chart-bar"></i><span>View Grades</span></a>
+         </div>
+      </div>
+      <div class="box shadow-light">
+         <h3 class="title"><i class="fas fa-tasks main-color mr-half"></i>Assignments</h3>
+         <div class="flex">
+            <a href="assignments.html"><i class="fas fa-tasks"></i><span>View Assignments</span></a>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- home grid section end -->
+
+<!-- preview section for latest test, assignment, and announcement start -->
+<section class="preview-section my-3">
+  <div class="box-container d-flex flex-wrap gap-2-5 justify-content-center">
+    <div class="box min-w-280 flex-1 shadow-light">
+      <h3 class="title"><i class="fas fa-file-alt main-color mr-half"></i>Latest Test</h3>
+      <div id="latest-test-preview"><p>No tests available yet.</p></div>
+      <a href="test.html" class="btn mt-1">Go to Tests</a>
+    </div>
+    <div class="box min-w-280 flex-1 shadow-light">
+      <h3 class="title"><i class="fas fa-tasks main-color mr-half"></i>Latest Assignment</h3>
+      <div id="latest-assignment-preview"><p>No assignments available yet.</p></div>
+      <a href="assignments.html" class="btn mt-1">Go to Assignments</a>
+    </div>
+    <div class="box min-w-280 flex-1 shadow-light">
+      <h3 class="title"><i class="fas fa-bullhorn main-color mr-half"></i>Latest Announcement</h3>
+      <div id="latest-announcement-preview"><p>No announcements yet.</p></div>
+      <a href="announcements.html" class="btn mt-1">Go to Announcements</a>
+    </div>
+    <div class="box min-w-280 flex-1 shadow-light">
+      <h3 class="title"><i class="fas fa-envelope main-color mr-half"></i>Latest Message</h3>
+      <div id="latest-message-preview"><p>No messages yet.</p></div>
+      <a href="messages.html" class="btn mt-1">Go to Messages</a>
+    </div>
+  </div>
+</section>
+<!-- preview section end -->
+
+<hr class="hr-light">
+
+<!-- courses section start -->
+<section class="courses mb-2">
+   <h1 class="heading"><i class="fas fa-graduation-cap main-color mr-1"></i>My Courses</h1>
+   <div class="box-container gap-2-5" id="home-courses-list">
+      <p id="no-materials-msg">No materials available.</p>
+      
+
+   </div>
+</section>
+<!-- courses section end -->
+
+<!-- footer section start -->
+<footer class="footer">
+
+   &copy; copyright @ 2025 by <span>eduTechzam</span> | all rights reserved!
+
+</footer>
+<!-- footer section end -->
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script src="js/notifications_service.js"></script>
+<script src="js/student_notifications.js"></script>
+<script>
+// Toggle sidebar
+let menuBtn = document.querySelector('#menu-btn');
+let sideBar = document.querySelector('.side-bar');
+let closeBtn = document.querySelector('#close-btn');
+
+if(menuBtn) {
+   menuBtn.onclick = () => {
+      sideBar.classList.toggle('active');
+      menuBtn.classList.toggle('fa-times');
+   };
+}
+
+if(closeBtn) {
+   closeBtn.onclick = () => {
+      sideBar.classList.remove('active');
+      menuBtn.classList.remove('fa-times');
+   };
+}
+
+// Toggle profile dropdown
+let userBtn = document.querySelector('#user-btn');
+let profile = document.querySelector('.header .flex .profile');
+
+if(userBtn && profile) {
+   userBtn.onclick = () => {
+      profile.classList.toggle('active');
+   };
+}
+
+// Close dropdown when clicking outside
+window.onclick = (e) => {
+   if (!e.target.matches('#user-btn') && !e.target.closest('.profile')) {
+      if (profile) {
+         profile.classList.remove('active');
+      }
+   }
+};
+
+// Set the image source with error handling
+function setImageWithFallback(imgElement, src) {
+   if (!imgElement) return;
+   imgElement.onerror = function() {
+      this.onerror = null; // Prevent infinite loop if default image fails
+      this.src = 'images/default-avatar.png';
+   };
+   imgElement.src = src || 'images/default-avatar.png';
+}
+
+// Update user profile information
+function updateUserProfile() {
+   const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+   if (!currentUser) return;
+
+   const profileImage = 
+      (currentUser.profile && currentUser.profile.avatar) ||
+      currentUser.avatar ||
+      (currentUser.profile_pic || 'images/default-avatar.png');
+
+   // Update all profile images on the page
+   const profileImages = [
+      document.getElementById('header-profile-img'),
+      document.getElementById('sidebar-profile-img'),
+      document.querySelector('.profile .image')
+   ];
+   
+   profileImages.forEach(img => setImageWithFallback(img, profileImage));
+   
+   // Update user name if element exists
+   const userNameElement = document.querySelector('.profile .name');
+   if (userNameElement) {
+      userNameElement.textContent = currentUser.name || 'Student';
+   }
+   
+   // Update welcome message
+   const welcomeMsg = document.getElementById('welcome-msg');
+   if (welcomeMsg) {
+      welcomeMsg.textContent = `Welcome back, ${currentUser.name || 'Student'}!`;
+   }
+}
+
+// Initialize user profile when page loads
+document.addEventListener('DOMContentLoaded', function() {
+   updateUserProfile();
+});
+</script>
+<script src="js/messages.js"></script>
+
+
+<!-- Authentication check -->
+<script>
+// Check if user is logged in and is a student
+document.addEventListener('DOMContentLoaded', function() {
+   // Check authentication
+   try {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      console.log('Current user:', currentUser);
+      
+      if (!currentUser) {
+         console.log('No user found, redirecting to login');
+         window.location.href = 'login.html';
+         return;
+      }
+      
+      if (currentUser.userType !== 'student') {
+         console.log('User is not a student, redirecting to login');
+         alert('Access denied. This page is for students only.');
+         window.location.href = 'login.html';
+         return;
+      }
+      
+      // Update user info in the header
+      const nameElement = document.querySelector('.profile .name');
+      if (nameElement) {
+         nameElement.textContent = currentUser.name;
+         // Add welcome message
+         const welcomeMsg = document.getElementById('welcome-msg');
+         if (welcomeMsg) {
+            welcomeMsg.textContent = `Welcome, ${currentUser.name}!`;
+         }
+      }
+      
+      
+      console.log('Authentication successful for student');
+   } catch (error) {
+      console.error('Authentication error:', error);
+      alert('Authentication error. Please try logging in again.');
+      window.location.href = 'login.html';
+   }
+});
+</script>
+
+
+<!-- Add modal video player structure just before </body> -->
+<div id="video-modal" class="modal-hidden">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeVideoModal()">&times;</button>
+    <video id="modal-video" controls></video>
+  </div>
+</div>
+
+</body>
+</html>

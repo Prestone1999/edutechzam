@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Teacher Settings</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">TEACHER DASHBOARD</a>
+      <form action="#" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search.." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+           <img src="images/pic-1.jpg" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">teacher</p>
+         <a href="profile-teacher.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+  
+    <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="">
+      <div class="line"></div>
+      
+   </div>
+   <nav class="navbar">
+      <a href="teacher_home.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="teacher_messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+      <a href="teacher_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="grade_assignments.html"><i class="fas fa-marker"></i><span>Grade Assignments</span></a>
+      <a href="view_students.html"><i class="fas fa-users"></i><span>View Students</span></a>
+      <a href="teacher_assignments.html"><i class="fas fa-tasks"></i><span>Assignments</span></a>
+       <a href="create_test.html"><i class="fas fa-file-alt"></i><span>Create Test</span></a>
+      <a href="teacher_settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+   </nav>
+</div>
+<!-- sidebar section end -->
+
+<section class="settings-container">
+    <h1 class="heading">Student Dashboard Settings</h1>
+
+    <div class="settings-box">
+        <h3 class="setting-title">Clear Latest Updates</h3>
+        <p class="setting-description">This will clear the 'Latest Test', 'Latest Assignment', and 'Latest Announcement' sections on the student dashboard.</p>
+        <button id="clear-updates-btn" class="btn-danger">Clear Updates</button>
+    </div>
+
+    <div class="settings-box">
+        <h3 class="setting-title">Clear All Courses</h3>
+        <p class="setting-description">This will remove all courses from the 'My Courses' section on the student dashboard.</p>
+        <button id="clear-courses-btn" class="btn-danger">Clear Courses</button>
+    </div>
+
+    <div class="settings-box">
+        <h3 class="setting-title">Erase All Tests</h3>
+        <p class="setting-description">This will permanently delete all created tests. This action cannot be undone.</p>
+        <button id="erase-tests-btn" class="btn-danger">Erase All Tests</button>
+    </div>
+
+    <div class="settings-box">
+        <h3 class="setting-title">Clear Announcements</h3>
+        <p class="setting-description">This will remove all announcements from the system.</p>
+        <button id="clear-announcements-btn" class="btn-danger">Clear Announcements</button>
+    </div>
+
+    <div class="settings-box">
+        <h3 class="setting-title">Clear Grades</h3>
+        <p class="setting-description">This will remove all grades from the system.</p>
+        <button id="clear-grades-btn" class="btn-danger">Clear Grades</button>
+    </div>
+
+    <div class="settings-box">
+        <h3 class="setting-title">Clear Messages</h3>
+        <p class="setting-description">This will remove all messages from the system.</p>
+        <button id="clear-messages-btn" class="btn-danger">Clear Messages</button>
+    </div>
+
+    <div class="settings-box">
+        <h3 class="setting-title">Clear Assignments</h3>
+        <p class="setting-description">This will remove all assignments from the system.</p>
+        <button id="clear-assignments-btn" class="btn-danger">Clear Assignments</button>
+    </div>
+
+    <div class="settings-box">
+        <h3 class="setting-title">Clear All Data</h3>
+        <p class="setting-description">This will remove all tests, announcements, grades, messages, and assignments. This action cannot be undone.</p>
+        <button id="clear-all-btn" class="btn-danger">Clear All</button>
+    </div>
+</section>
+
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>prestone chooye</span> | all rights reserved!
+</footer>
+
+<script src="js/settings.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html> 

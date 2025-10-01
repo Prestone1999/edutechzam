@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Dashboard</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">ADMIN DASHBOARD</a>
+       <form action="#" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search users..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+    
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+           <img src="" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">admin</p>
+         <a href="admin_profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+   <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="">
+      <div class="line"></div>
+      
+   </div>
+
+   <nav class="navbar">
+      <a href="admin_dash.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="admin_manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="admin_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="user_management.html"><i class="fas fa-users"></i><span>User Management</span></a>
+      <a href="admin_setting.html"><i class="fas fa-cog"></i><span>System Settings</span></a>
+   </nav>
+</div>
+<!-- sidebar section end -->
+<!-- admin home grid section start -->
+<section class="home-grid mt-2"> 
+   <h1 class="heading"><i class="fas fa-bolt main-color mr-1"></i>Quick Options</h1>
+   <div class="box-container gap-2-5">
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-chalkboard-teacher main-color mr-half"></i>Manage Courses</h3>
+         <div class="flex">
+            <a href="manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage</span></a>
+         </div>
+      </div>
+
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-bullhorn main-color mr-half"></i>Announcements</h3>
+         <div class="flex">
+            <a href="teacher_announcements.html"><i class="fas fa-bullhorn"></i><span>View Announcements</span></a>
+         </div>
+      </div>
+      
+
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-users main-color mr-half"></i>View users</h3>
+         <div class="flex">
+            <a href="user_management.html"><i class="fas fa-users"></i><span>View</span></a>
+         </div>
+      </div>
+      
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-user-shield main-color mr-half"></i>Roles & Permissions</h3>
+         <div class="flex">
+            <a href="admin_setting.html#roles-permissions-settings"><i class="fas fa-shield-alt"></i><span>Configure</span></a>
+         </div>
+      </div>
+
+
+</section>
+
+<!-- footer section start -->
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>eduTech</span> | all rights reserved!
+</footer>
+<!-- footer section end -->
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script>
+// Toggle sidebar
+let menuBtn = document.querySelector('#menu-btn');
+let sideBar = document.querySelector('.side-bar');
+let closeBtn = document.querySelector('#close-btn');
+
+if(menuBtn) {
+   menuBtn.onclick = () => {
+      sideBar.classList.toggle('active');
+      menuBtn.classList.toggle('fa-times');
+   };
+}
+
+if(closeBtn) {
+   closeBtn.onclick = () => {
+      sideBar.classList.remove('active');
+      if(menuBtn) menuBtn.classList.remove('fa-times');
+   };
+}
+
+// Toggle profile dropdown
+let userBtn = document.querySelector('#user-btn');
+let profile = document.querySelector('.header .flex .profile');
+
+if(userBtn && profile) {
+   userBtn.onclick = (e) => {
+      e.stopPropagation();
+      profile.classList.toggle('active');
+   };
+}
+
+// Close dropdown when clicking outside
+window.onclick = (e) => {
+   if (!e.target.matches('#user-btn') && !e.target.closest('.profile')) {
+      if (profile) {
+         profile.classList.remove('active');
+      }
+   }
+};
+
+// Set the image source with error handling
+function setImageWithFallback(imgElement, src) {
+   if (!imgElement) return;
+   imgElement.onerror = function() {
+      this.onerror = null; // Prevent infinite loop if default image fails
+      this.src = 'images/default-avatar.png';
+   };
+   imgElement.src = src || 'images/default-avatar.png';
+}
+
+// Update user profile information
+function updateAdminProfile() {
+   const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+   if (!currentUser) return;
+
+   const profileImage = 
+      (currentUser.profile && currentUser.profile.avatar) ||
+      currentUser.avatar ||
+      (currentUser.profile_pic || 'images/default-avatar.png');
+
+   // Update all profile images on the page
+   const profileImages = [
+      document.querySelector('.profile .image'),
+      document.getElementById('header-profile-img')
+   ];
+   
+   profileImages.forEach(img => setImageWithFallback(img, profileImage));
+   
+   // Update user name if element exists
+   const userNameElement = document.querySelector('.profile .name');
+   if (userNameElement) {
+      userNameElement.textContent = currentUser.name || 'Admin';
+   }
+}
+
+// Initialize user profile when page loads
+document.addEventListener('DOMContentLoaded', function() {
+   updateAdminProfile();
+});
+
+// Check if user is logged in and is a teacher
+document.addEventListener('DOMContentLoaded', function() {
+   try {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      console.log('Current user:', currentUser);
+      
+      if (!currentUser) {
+         console.log('No user found, redirecting to login');
+         window.location.href = 'login.html';
+         return;
+      }
+      
+      if (currentUser.userType !== 'admin') {
+         console.log('User is not an admin, redirecting to login');
+         alert('Access denied. This page is for admin only.');
+         window.location.href = 'login.html';
+         return;
+      }
+      
+      // Update user info in the header
+      const nameElement = document.querySelector('.profile .name');
+      if (nameElement) {
+         nameElement.textContent = currentUser.name;
+         console.log('Updated user name in header');
+      }
+      
+      // Update notification count
+      if (typeof updateNotificationCount === 'function') {
+         updateNotificationCount();
+      }
+      
+      console.log('Authentication successful for admin');
+   } catch (error) {
+      console.error('Authentication error:', error);
+      alert('Authentication error. Please try logging in again.');
+      window.location.href = 'login.html';
+   }
+});
+</script>
+
+
+
+</body>
+</html> 

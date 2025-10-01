@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Teacher Dashboard</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   <!-- Notification System -->
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">TEACHER DASHBOARD</a>
+      <form action="#" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="notification-btn" class="fas fa-bell notification-icon">
+            <a href="" class="notification-link"></a>
+            <span class="notification-badge">0</span>
+         </div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      
+      <div class="profile">
+           <img src="" class="image" id="header-profile-img" alt="Teacher Profile">
+         <h3 class="name"></h3>
+         <p class="role">teacher</p>
+         <a href="profile-teacher.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+   <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="Logo">
+      <div class="line"></div>
+   </div>
+
+   <nav class="navbar">
+      <a href="teacher_home.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="teacher_messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+      <a href="teacher_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="grade_assignments.html"><i class="fas fa-marker"></i><span>Grade Assignments</span></a>
+      <a href="view_students.html"><i class="fas fa-users"></i><span>View Students</span></a>
+      <a href="teacher_assignments.html"><i class="fas fa-tasks"></i><span>Assignments</span></a>
+      <a href="create_test.html"><i class="fas fa-file-alt"></i><span>Create Test</span></a>
+      <a href="teacher_settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+   </nav>
+</div>
+<!-- sidebar section end -->
+<!-- teacher home grid section start -->
+<section class="home-grid mt-2"> 
+   <h1 class="heading"><i class="fas fa-bolt main-color mr-1"></i>Quick Options</h1>
+   <div class="box-container gap-2-5">
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-chalkboard-teacher main-color mr-half"></i>Manage Courses</h3>
+         <div class="flex">
+            <a href="manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage</span></a>
+         </div>
+      </div>
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-envelope main-color mr-half"></i>Messages</h3>
+         <div class="flex">
+            <a href="teacher_messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+         </div>
+      </div>
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-bullhorn main-color mr-half"></i>Announcements</h3>
+         <div class="flex">
+            <a href="teacher_announcements.html"><i class="fas fa-bullhorn"></i><span>View Announcements</span></a>
+         </div>
+      </div>
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-marker main-color mr-half"></i>Grade Assignments</h3>
+         <div class="flex">
+            <a href="grade_assignments.html"><i class="fas fa-marker"></i><span>Grade</span></a>
+         </div>
+      </div>
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-users main-color mr-half"></i>View Students</h3>
+         <div class="flex">
+            <a href="view_students.html"><i class="fas fa-users"></i><span>View</span></a>
+         </div>
+      </div>
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-tasks main-color mr-half"></i>Assignments</h3>
+         <div class="flex">
+            <a href="teacher_assignments.html"><i class="fas fa-tasks"></i><span>Manage Assignments</span></a>
+         </div>
+      </div>
+      <div class="box shadow-md">
+         <h3 class="title"><i class="fas fa-file-alt main-color mr-half"></i>Create Test</h3>
+         <div class="flex">
+            <a href="create_test.html"><i class="fas fa-file-alt"></i><span>Create Test</span></a>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- teacher home grid section end -->
+
+<!-- Test Results Section Start -->
+<section class="test-results my-3 max-w-900 mx-auto">
+  <h1 class="heading"><i class="fas fa-file-alt main-color mr-1"></i>Test Results</h1>
+  <div id="teacher-test-results-list"></div>
+</section>
+<!-- Test Results Section End -->
+
+<!-- footer section start -->
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>eduTech</span> | all rights reserved!
+</footer>
+<!-- footer section end -->
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script src="js/notifications_service.js"></script>
+<script src="js/teacher_notifications.js"></script>
+<script>
+// Toggle sidebar
+let menuBtn = document.querySelector('#menu-btn');
+let sideBar = document.querySelector('.side-bar');
+let closeBtn = document.querySelector('#close-btn');
+
+if(menuBtn) {
+   menuBtn.onclick = () => {
+      sideBar.classList.toggle('active');
+      menuBtn.classList.toggle('fa-times');
+   };
+}
+
+if(closeBtn) {
+   closeBtn.onclick = () => {
+      sideBar.classList.remove('active');
+      menuBtn.classList.remove('fa-times');
+   };
+}
+
+// Toggle profile dropdown
+let userBtn = document.querySelector('#user-btn');
+let profile = document.querySelector('.header .flex .profile');
+
+if(userBtn && profile) {
+   userBtn.onclick = () => {
+      profile.classList.toggle('active');
+   };
+}
+
+// Close dropdown when clicking outside
+window.onclick = (e) => {
+   if (!e.target.matches('#user-btn') && !e.target.closest('.profile')) {
+      if (profile) {
+         profile.classList.remove('active');
+      }
+   }
+};
+
+   document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      
+      if (currentUser) {
+         // Set profile image - check all possible locations for the uploaded image
+         const profileImage = 
+            (currentUser.profile && currentUser.profile.avatar) || // Check profile.avatar first
+            currentUser.avatar ||                                   // Then check root avatar
+            (currentUser.profile_pic || 'images/default-avatar.png'); // Then check profile_pic
+            
+         // Set the image source with error handling
+         function setImageWithFallback(imgElement, src) {
+            if (!imgElement) return;
+            imgElement.onerror = function() {
+               this.onerror = null; // Prevent infinite loop if default image fails
+               this.src = 'images/default-avatar.png';
+            };
+            imgElement.src = src || 'images/default-avatar.png';
+         }
+         
+         // Update all profile images on the page
+         const profileImages = [
+            document.getElementById('header-profile-img'),
+            document.getElementById('sidebar-profile-img'),
+            document.querySelector('.profile .image')
+         ];
+         
+         profileImages.forEach(img => setImageWithFallback(img, profileImage));
+         
+         // Update user name if element exists
+         const userNameElement = document.querySelector('.profile .name');
+         if (userNameElement) {
+            userNameElement.textContent = currentUser.name || 'Teacher';
+         }
+      } else {
+         // If no user is logged in, redirect to login
+         window.location.href = 'login.html';
+      }
+   });
+</script>
+
+<!-- Authentication check -->
+<script>
+// Check if user is logged in and is a teacher
+document.addEventListener('DOMContentLoaded', function() {
+   try {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      console.log('Current user:', currentUser);
+      
+      if (!currentUser) {
+         console.log('No user found, redirecting to login');
+         window.location.href = 'login.html';
+         return;
+      }
+      
+      if (currentUser.userType !== 'teacher') {
+         console.log('User is not a teacher, redirecting to login');
+         alert('Access denied. This page is for teachers only.');
+         window.location.href = 'login.html';
+         return;
+      }
+      
+      // Update user info in the header
+      const nameElement = document.querySelector('.profile .name');
+      if (nameElement) {
+         nameElement.textContent = currentUser.name;
+         console.log('Updated user name in header');
+      }
+      
+      // Load test results
+      showTeacherTestResults();
+      
+      console.log('Authentication successful for teacher');
+   } catch (error) {
+      console.error('Authentication error:', error);
+      alert('Authentication error. Please try logging in again.');
+      window.location.href = 'login.html';
+   }
+});
+</script>
+
+</body>
+</html>

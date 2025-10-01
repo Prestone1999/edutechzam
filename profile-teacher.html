@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Teacher Profile</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   <style>
+      .profile-avatar {
+         width: 150px;
+         height: 150px;
+         border-radius: 50%;
+         object-fit: cover;
+         border: 5px solid #fff;
+         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+         margin-bottom: 20px;
+      }
+      .profile-status {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         margin: 10px 0;
+         color: #666;
+      }
+      .profile-status i {
+         color: #4caf50;
+         font-size: 12px;
+      }
+      .profile-status.offline i {
+         color: #f44336;
+      }
+   </style>
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">TEACHER DASHBOARD</a>
+      <form action="#" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+           <img src="" class="image" id="header-profile-img" alt="Teacher Profile">
+         <h3 class="name"></h3>
+         <p class="role">teacher</p>
+         <a href="profile-teacher.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+ <div class="profile">
+      <img src="" id="sidebar-profile-img" width="100px" height="100px" alt="Profile">
+      <div class="line"></div>
+</div>
+
+   <nav class="navbar">
+      <a href="teacher_home.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="teacher_messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+      <a href="teacher_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="grade_assignments.html"><i class="fas fa-marker"></i><span>Grade Assignments</span></a>
+      <a href="view_students.html"><i class="fas fa-users"></i><span>View Students</span></a>
+      <a href="teacher_assignments.html"><i class="fas fa-tasks"></i><span>Assignments</span></a>
+      <a href="create_test.html"><i class="fas fa-file-alt"></i><span>Create Test</span></a>
+      <a href="teacher_settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+   </nav>
+</div>
+
+<section class="user-profile">
+   <h1 class="heading">Your Profile</h1>
+   
+   <div class="profile-container">
+      <!-- Profile Sidebar -->
+      <div class="profile-sidebar">
+         <div class="profile-header">
+            <img id="profile-avatar" src="" alt="Profile Picture" class="profile-avatar">
+            <h3 id="profile-name" class="profile-name">Loading...</h3>
+            <span id="profile-email" class="profile-role">Loading...</span>
+            <div class="profile-status">
+               <i id="status-indicator" class="fas fa-circle"></i>
+               <span id="status-text">Loading...</span>
+            </div>
+            <a href="teacher-update profile.html" class="inline-btn" style="margin-top: 1rem;">Update Profile</a>
+         </div>
+         
+         <div class="profile-info-grid">
+            <!-- Profile information will be loaded here by JavaScript -->
+         </div>
+      </div>
+      
+      <!-- Profile Main Content -->
+      <div class="profile-main">
+         <!-- Statistics Cards -->
+         <div class="profile-card">
+            <h3>Teaching Statistics</h3>
+            <div class="stats-grid">
+               <!-- Statistics will be loaded here by JavaScript -->
+            </div>
+         </div>
+         
+         <!-- Recent Activity -->
+         <div class="profile-card">
+            <h3>Recent Activity</h3>
+            <div class="activity-feed">
+               <!-- Activities will be loaded here by JavaScript -->
+            </div>
+         </div>
+         
+         <!-- Skills & Expertise -->
+         <div class="profile-card">
+            <h3>Skills & Expertise</h3>
+            <div class="skills-tags">
+               <!-- Skills will be loaded here by JavaScript -->
+            </div>
+         </div>
+         
+         <!-- Achievements -->
+         <div class="profile-card">
+            <h3>Teaching Achievements</h3>
+            <div class="achievements-grid">
+               <!-- Achievements will be loaded here by JavaScript -->
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- footer section start -->
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>eduTechzam</span> | all rights reserved!
+</footer>
+<!-- footer section end -->
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script src="js/profile_manager.js"></script>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      // Initialize profile manager
+      if (document.querySelector('.user-profile')) {
+         const profileManager = new ProfileManager();
+      }
+      
+      // Set up profile image with error handling
+      function setImageWithFallback(imgElement, src) {
+         if (!imgElement) return;
+         
+         imgElement.onerror = function() {
+            this.onerror = null; // Prevent infinite loop if default image fails
+            this.src = 'images/default-avatar.png';
+         };
+         
+         // Only set src if it's different to prevent flickering
+         if (imgElement.src !== src) {
+            imgElement.src = src || 'images/default-avatar.png';
+         }
+      }
+      
+      // Update profile images in header and sidebar
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      if (currentUser) {
+         const profileImage = 
+            (currentUser.profile && currentUser.profile.avatar) ||
+            currentUser.avatar ||
+            (currentUser.profile_pic || 'images/default-avatar.png');
+            
+         const profileImages = [
+            document.getElementById('header-profile-img'),
+            document.getElementById('sidebar-profile-img'),
+            document.querySelector('.profile .image'),
+            document.getElementById('profile-avatar')
+         ];
+         
+         profileImages.forEach(img => setImageWithFallback(img, profileImage));
+         
+         // Update user name in header
+         const userNameElements = document.querySelectorAll('.profile .name');
+         userNameElements.forEach(el => {
+            if (el && currentUser.name) {
+               el.textContent = currentUser.name;
+            }
+         });
+      } else {
+         window.location.href = 'login.html';
+      }
+   });
+</script>
+</body>
+</html> 

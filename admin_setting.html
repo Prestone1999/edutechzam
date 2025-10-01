@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Dashboard</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">ADMIN DASHBOARD</a>
+    
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+           <img src="" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">admin</p>
+         <a href="admin_profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+   <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="">
+      <div class="line"></div>
+      
+   </div>
+
+   <nav class="navbar">
+      <a href="admin_dash.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href=" admin_manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="admin_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href=""><i class="fas fa-users"></i><span>user Management</span></a>
+      <a href="admin_setting.html"><i class="fas fa-cog"></i><span> system Settings</span></a>
+   </nav>
+</div>
+<!-- sidebar section end -->
+
+
+
+<section class="settings-container">
+    <h1 class="heading">Admin Dashboard Settings</h1>
+
+    <div class="settings-box" id="roles-permissions-settings">
+        <h3 class="setting-title">Roles & Permissions</h3>
+        <p class="setting-description">Configure which roles can access the system and what each role is allowed to do.</p>
+
+        <div class="box" style="margin-bottom:1.5rem;">
+            <h4 style="margin-bottom:0.8rem;">System Access</h4>
+            <div id="system-access-roles" style="display:flex; gap:1rem; flex-wrap:wrap;"></div>
+        </div>
+
+        <div class="box">
+            <h4 style="margin-bottom:0.8rem;">Role Permissions</h4>
+            <div id="role-permissions-matrix" style="overflow-x:auto;"></div>
+            <div style="margin-top:1rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                <button id="save-role-permissions-btn" class="inline-btn"><i class="fas fa-save"></i> Save Changes</button>
+                <button id="reset-role-permissions-btn" class="inline-option-btn"><i class="fas fa-undo"></i> Reset to Defaults</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>eduTechzam</span> | all rights reserved!
+</footer>
+<script src="js/settings.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

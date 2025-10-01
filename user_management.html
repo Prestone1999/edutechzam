@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>User Management</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <style>
+      .users-table { width: 100%; border-collapse: collapse; }
+      .users-table th, .users-table td { padding: 1rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
+      .users-table th { background: var(--light-bg); }
+      .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+      @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+      .input-holder input ,.input-holder select { width: 50%; padding: 1.3rem; border: 2px solid #ccc; border-radius: 10px; }
+      .input-holder label { display: block; margin-bottom: 0.5rem;  }
+      .home-grid { padding: 2rem; font-size: 1.8rem; }
+      
+   </style>
+   <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      try {
+         const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+         if (!currentUser) {
+            window.location.href = 'login.html';
+            return;
+         }
+         if (currentUser.userType !== 'admin') {
+            alert('Access denied. This page is for admin only.');
+            window.location.href = 'login.html';
+            return;
+         }
+         const nameElement = document.querySelector('.profile .name');
+         if (nameElement) nameElement.textContent = currentUser.name || 'Admin';
+      } catch (e) {
+         window.location.href = 'login.html';
+      }
+   });
+   </script>
+</head>
+<body>
+<header class="header">
+   <section class="flex">
+      <a href="admin_dash.html" class="logo">USER MANAGEMENT</a>
+      <form action="#" class="search-form" onsubmit="return false;">
+         <input type="text" id="user-search" placeholder="Search users..." maxlength="100">
+         <button type="button" class="fas fa-search"></button>
+      </form>
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+         <img src="" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">admin</p>
+         <a href="admin_profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+   </header>
+
+<div class="side-bar">
+   <div id="close-btn"><i class="fas fa-times"></i></div>
+   <div class="profile">
+      <img src="images/logo2.png" width="100" height="100" alt="">
+      <div class="line"></div>
+   </div>
+   <nav class="navbar">
+      <a href="admin_dash.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="admin_manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="admin_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a class="active" href="user_management.html"><i class="fas fa-users"></i><span>User Management</span></a>
+      <a href="admin_setting.html"><i class="fas fa-cog"></i><span>System Settings</span></a>
+   </nav>
+</div>
+
+<section class="home-grid mt-2">
+   <h1 class="heading"><i class="fas fa-users main-color mr-1"></i>Users</h1>
+
+   <div class="box shadow-md">
+      <h3 class="title"><i class="fas fa-user-edit main-color mr-half"></i>Edit User</h3>
+      <form id="userForm" class="form-grid">
+         <input type="hidden" name="editId" id="editId" value="">
+         <div class="input-holder">
+            <label for="editName">Name</label>
+            <input type="text" id="editName" name="name" class="box" placeholder="Full name">
+         </div>
+
+         <div class="input-holder">
+            <label for="editEmail">Email</label>
+            <input type="email" id="editEmail" name="email" class="box" placeholder="Email address">
+         </div>
+         <div class="input-holder">
+            <label for="editUserType">Role</label>
+            <select id="editUserType" name="userType" class="box">
+               <option value="student">Student</option>
+               <option value="teacher">Teacher</option>
+               <option value="admin">Admin</option>
+            </select>
+         </div>
+         <div class="input-holder">
+            <label for="editPassword">Password</label>
+            <input type="password" id="editPassword" name="password" class="box" placeholder="Leave blank to keep unchanged">
+         </div>
+         <div style="grid-column: 1 / -1; display:flex; gap:1rem; flex-wrap:wrap;">
+            <button type="submit" class="inline-btn"><i class="fas fa-save"></i> Save</button>
+            <button type="button" id="cancelEdit" class="inline-option-btn"><i class="fas fa-times"></i> Cancel</button>
+         </div>
+      </form>
+   </div>
+
+   <div class="box shadow-md">
+      <h3 class="title"><i class="fas fa-table main-color mr-half"></i>All Users</h3>
+      <div style="margin-bottom:1rem;">
+         <button type="button" id="send-students-to-teacher" class="inline-btn"><i class="fas fa-paper-plane"></i> Send Students to Teacher dashboad</button>
+      </div>
+      <div id="user-notification"></div>
+      <div style="overflow-x:auto;">
+         <table class="users-table">
+            <thead>
+               <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+               </tr>
+            </thead>
+            <tbody id="users-table-body"></tbody>
+         </table>
+      </div>
+   </div>
+</section>
+
+<footer class="footer">&copy; copyright @ 2025 by <span>eduTech</span> | all rights reserved!</footer>
+
+
+
+<script src="js/script.js"></script>
+</body>
+</html>
+
+

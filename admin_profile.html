@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Profile</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+
+      <a href="admin_dash.html" class="logo">ADMIN DASHBOARD</a>
+
+      <form action="#" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search users..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="" class="image" id="header-profile-img" alt="Admin Profile">
+         <h3 class="name"></h3>
+         <p class="role">admin</p>
+         <a href="admin_profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+             <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+ <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="Logo">
+      <div class="line"></div>
+      
+   </div>
+
+   <nav class="navbar">
+      <a href="admin_dash.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="admin_manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="admin_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href="user_management.html"><i class="fas fa-users"></i><span>User Management</span></a>
+      <a href="admin_setting.html"><i class="fas fa-cog"></i><span>System Settings</span></a>
+   </nav>
+
+</div>
+
+<section class="user-profile">
+   <h1 class="heading">Admin Profile</h1>
+   
+   <div class="profile-container">
+      <!-- Profile Sidebar -->
+      <div class="profile-sidebar">
+         <div class="profile-header">
+            <img src="images/admin-pic.jpg" alt="Profile Picture" class="profile-avatar">
+            <h3 class="profile-name">Admin Name</h3>
+            <span class="profile-role">admin</span>
+            <div class="profile-status">
+               <i class="fas fa-circle"></i>
+               <span>Online</span>
+            </div>
+            <a href="admin_update_profile.html" class="inline-btn" style="margin-top: 1rem;">Update Profile</a>
+         </div>
+         
+         <div class="profile-info-grid">
+            <!-- Profile information will be loaded here by JavaScript -->
+         </div>
+      </div>
+      
+      <!-- Profile Main Content -->
+      <div class="profile-main">
+         <!-- Statistics Cards -->
+         <div class="profile-card">
+            <h3>System Statistics</h3>
+            <div class="stats-grid">
+               <!-- Statistics will be loaded here by JavaScript -->
+            </div>
+         </div>
+         
+         <!-- Recent Activity -->
+         <div class="profile-card">
+            <h3>Recent Activity</h3>
+            <div class="activity-feed">
+               <!-- Activities will be loaded here by JavaScript -->
+            </div>
+         </div>
+         
+         <!-- Skills & Expertise -->
+         <div class="profile-card">
+            <h3>Administrative Skills</h3>
+            <div class="skills-tags">
+               <!-- Skills will be loaded here by JavaScript -->
+            </div>
+         </div>
+         
+         <!-- Achievements -->
+         <div class="profile-card">
+            <h3>Administrative Achievements</h3>
+            <div class="achievements-grid">
+               <!-- Achievements will be loaded here by JavaScript -->
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<footer class="footer">
+
+      &copy; copyright @ 2025 by <span>eduTechzam</span> | all rights reserved!
+
+</footer>
+
+<!-- custom js file link  -->
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      
+      if (currentUser) {
+         // Set profile image - check all possible locations for the uploaded image
+         const profileImage = 
+            (currentUser.profile && currentUser.profile.avatar) || // Check profile.avatar first
+            currentUser.avatar ||                                   // Then check root avatar
+            (currentUser.profile_pic || 'images/default-avatar.png'); // Then check profile_pic
+            
+         // Set the image source with error handling
+         function setImageWithFallback(imgElement, src) {
+            if (!imgElement) return;
+            imgElement.onerror = function() {
+               this.onerror = null; // Prevent infinite loop if default image fails
+               this.src = 'images/default-avatar.png';
+            };
+            imgElement.src = src || 'images/default-avatar.png';
+         }
+         
+         // Update all profile images on the page
+         const profileImages = [
+            document.getElementById('header-profile-img'),
+            document.getElementById('sidebar-profile-img'),
+            document.querySelector('.profile .image')
+         ];
+         
+         profileImages.forEach(img => setImageWithFallback(img, profileImage));
+         
+         // Update user name if element exists
+         const userNameElement = document.querySelector('.profile .name');
+         if (userNameElement) {
+            userNameElement.textContent = currentUser.name || 'Admin';
+         }
+         
+         // Update any other profile information
+         const roleElement = document.querySelector('.profile .role');
+         if (roleElement) {
+            roleElement.textContent = currentUser.role || 'Administrator';
+         }
+      } else {
+         // If no user is logged in, redirect to login
+         window.location.href = 'login.html';
+      }
+   });
+</script>
+<script src="js/profile_manager.js"></script>
+
+<!-- Authentication check -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+   try {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      
+      if (!currentUser) {
+         window.location.href = 'login.html';
+         return;
+      }
+      
+      if (currentUser.userType !== 'admin') {
+         alert('Access denied. This page is for admin only.');
+         window.location.href = 'login.html';
+         return;
+      }
+      
+      // Update user info
+      const nameElements = document.querySelectorAll('.name');
+      nameElements.forEach(element => {
+         element.textContent = currentUser.name;
+      });
+      
+   } catch (error) {
+      console.error('Authentication error:', error);
+      alert('Authentication error. Please try logging in again.');
+      window.location.href = 'login.html';
+   }
+});
+</script>
+
+   
+</body>
+</html>

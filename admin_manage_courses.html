@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Dashboard</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+   <section class="flex">
+      <a href="teacher_home.html" class="logo">ADMIN DASHBOARD</a>
+      
+    
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+           <img src="" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">admin</p>
+         <a href="admin_profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+   </section>
+</header>
+<!-- header section end -->
+<!-- sidebar section start -->
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+   <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="">
+      <div class="line"></div>
+      
+   </div>
+
+   <nav class="navbar">
+      <a href="admin_dash.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href=" admin_manage_courses.html"><i class="fas fa-chalkboard-teacher"></i><span>Manage Courses</span></a>
+      <a href="admin_announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+      <a href=""><i class="fas fa-users"></i><span>user Management</span></a>
+      <a href="admin_setting.html"><i class="fas fa-cog"></i><span> system Settings</span></a>
+   </nav>
+</div>
+<!-- sidebar section end -->
+<section class="form-container mt-2 mb-2">
+   <form id="courseForm" class="max-w-700 mx-auto bg-white shadow-md p-2 rounded">
+      <h2 class="heading"><i class="fas fa-chalkboard-teacher main-color mr-1"></i>Add New Course</h2>
+      <label class="font-xl">Course Title</label>
+      <input type="text" name="title" class="box" required>
+      <label class="font-xl">Description</label>
+      <textarea name="description" class="box" rows="2" required></textarea>
+      <label class="font-xl">Number of Lessons</label>
+      <input type="number" name="lessons" class="box" min="1" required>
+      <label class="font-xl">Image (optional)</label>
+      <input type="file" name="image" class="box" accept="image/*">
+      <div id="image-preview" class="mb-1"></div>
+      <label class="font-xl">Teacher Name</label>
+      <input type="text" name="teacher" class="box" placeholder="e.g. Mr. Banda" required>
+      <label class="font-xl">PDF (optional)</label>
+      <input type="file" name="pdf" class="box" accept="application/pdf">
+      <div id="pdf-preview" class="mb-1"></div>
+      <label class="font-xl">Video (optional)</label>
+      <input type="file" name="video" class="box" accept="video/*">
+      <div id="video-preview" class="mb-1"></div>
+      <div class="d-flex gap-1 mt-2">
+         <button type="submit" class="btn">Add Course</button>
+         <button type="button" class="option-btn" id="reset-course-form">Reset</button>
+      </div>
+      <input type="hidden" name="editIndex" value="">
+   </form>
+</section>
+<div id="course-notification" class="course-notification-container"></div>
+<section class="courses courses-section">
+   <div class="courses-toolbar">
+      <input type="text" id="course-search" class="box course-search-input" placeholder="Search by title or teacher...">
+      <select id="course-sort" class="box course-sort-select">
+         <option value="date">Sort by: Date Added</option>
+         <option value="title">Sort by: Title</option>
+         <option value="teacher">Sort by: Teacher</option>
+      </select>
+   </div>
+   <h1 class="heading"><i class="fas fa-chalkboard-teacher heading-icon"></i>Manage Courses</h1>
+   <div id="courses-list" class="box-container courses-list-container"></div>
+   <div id="courses-pagination" class="courses-pagination-container"></div>
+</section>
+<!-- Modal for course details -->
+<div id="course-details-modal" class="modal-overlay">
+  <div class="modal-content">
+    <button onclick="closeCourseDetailsModal()" class="modal-close-btn">&times;</button>
+    <div id="course-details-content"></div>
+  </div>
+</div>
+
+ 
+
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>eduTechzam</span> | all rights reserved!
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- header section start -->
+<header class="header">
+    <section class="flex">
+        <a href="home.html" class="logo">STUDENT DASHBOARD</a>
+        <form action="#" method="post" class="search-form">
+            <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+        <div class="profile">
+            <img src="images/pic-1.jpg" class="image" alt="">
+         <h3 class="name"></h3>
+         <p class="role">student</p>
+         <a href="profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+         <a href="login.html" class="option-btn">logout</a>
+         </div>
+      </div>
+    </section>
+</header>
+<!-- header section end -->
+
+<!-- sidebar section start -->
+<div class="side-bar">
+    <div id="close-btn">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="profile">
+      <img src="images/logo2.png" width="100px" height="100px" alt="">
+      <div class="line"></div>
+</div>
+    <nav class="navbar">
+        <a href="home.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+        <a href="test.html"><i class="fas fa-file-alt"></i><span>Test</span></a>
+        <a href="messages.html"><i class="fas fa-envelope"></i><span>Messages</span></a>
+        <a href="announcements.html"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+        <a href="student_grades.html"><i class="fas fa-chart-bar"></i><span>Grades</span></a>
+        <a href="assignments.html"><i class="fas fa-tasks"></i><span>Assignments</span></a>
+        <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+        <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+    
+    </nav>
+</div>
+<!-- sidebar section end -->
+
+<section class="student-assignments my-3 mx-auto max-w-900" id="student-assignments-section">
+   <h1 class="heading"><i class="fas fa-tasks main-color mr-1"></i>Available Assignments</h1>
+   <div id="student-assignments-list" class="box-container"></div>
+</section>
+<!-- Assignment Details & Submission Modal -->
+<div id="assignment-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-content-scrollable">
+    <button id="close-assignment-modal" class="modal-close-btn">&times;</button>
+    <div id="assignment-modal-content"></div>
+  </div>
+</div>
+
+<!-- footer section start -->
+<footer class="footer">
+   &copy; copyright @ 2025 by <span>eduTech</span> | all rights reserved!
+</footer>
+<!-- footer section end -->
+
+<!-- Authentication check -->
+<script>
+// Check if user is logged in and is a student
+document.addEventListener('DOMContentLoaded', function() {
+   const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+   if (!currentUser) {
+      window.location.href = 'login.html';
+      return;
+   }
+   
+   if (currentUser.userType !== 'student') {
+      alert('Access denied. This page is for students only.');
+      window.location.href = 'login.html';
+      return;
+   }
+   
+   // Update user info in the header
+   const nameElement = document.querySelector('.profile .name');
+   if (nameElement) {
+      nameElement.textContent = currentUser.name;
+   }
+});
+</script>
+
+<script src="js/script.js"></script>
+<script src="js/messages.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof showStudentAssignments === 'function') {
+    showStudentAssignments();
+  }
+});
+</script>
+</body>
+</html> 
