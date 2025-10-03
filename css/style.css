@@ -2131,7 +2131,7 @@ section{
 /* Override body padding for login/register pages */
 body.auth-page {
    padding-left: 0;
-   background-image: url(images/boy\ pic.jpg);
+   background-image: url(./images/boy\ pic.jpg);
    background-size: cover;
    background-repeat: no-repeat;
    
